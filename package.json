@@ -1,13 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^6.19.3",
