@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  publicacoes Publicacao[]
+}
+
+model Denuncia {
+  id          Int      @id @default(autoincrement())
+  tipo        String
+  descricao   String
+  local       String
+  nome        String?
+  email       String?
+  anonimo     Boolean  @default(false)
+  criadoEm    DateTime @default(now())
+}
+
+model Publicacao {
+  id           Int      @id @default(autoincrement())
+  titulo       String
+  conteudo     String
+  imagem       String?
+  likes        Int      @default(0)
+  userId       Int?
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("publicacoes")
+}

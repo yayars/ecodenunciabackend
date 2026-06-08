@@ -1,0 +1,9 @@
+### Criar Denúncia
+POST http://localhost:3000/denuncia
+Content-Type: application/json
+
+{
+    "tipo": "Descarte irregular de lixo doméstico",
+    "descricao": "Lixo sendo jogado na esquina toda noite",
+    "local": "Rua das Flores, 123"
+}
